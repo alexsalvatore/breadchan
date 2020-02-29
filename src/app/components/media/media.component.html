@@ -1,0 +1,23 @@
+<figure class="figure" *ngIf="url != null && url != ''">
+
+    <!--div style="heigth= 350px; width:100%; background-color:#e0f154; text-align:center; font-size:140px;"  class="img-fluid rounded" >📼</div-->
+
+    <img *ngIf="type.localeCompare('image') == 0" [src]="url" class="figure-img img-fluid rounded" height="{{heightMax}}" />
+
+    <audio *ngIf="type.localeCompare('music') === 0" controls="controls">
+      <source [src]="url" type="audio/mp3" />
+    </audio>
+
+    <video *ngIf="type.localeCompare('video') == 0" controls="controls" class="figure-img img-fluid rounded" height="{{heightMax}}">
+      <source [src]="url" type="video/mp4" />
+    </video>
+
+
+<figcaption  class='figcaption'>
+<b *ngIf='fileName'>{{fileName | truncate : 30}}</b> {{fileSize}} / {{type}} <br/>
+<button *ngIf='blob' (click)='saveFile()'class="btn btn-success">💾 Save file</button>&nbsp;
+<button *ngIf='blob' (click)='deleteFile()'class="btn btn-outline-danger">Delete file</button>
+</figcaption>
+
+
+</figure>

@@ -1,0 +1,15 @@
+<div>
+  <div class="container text-center">
+  <p>Insert your download 🎫 token here</p>
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Token"  [(ngModel)]="token" aria-describedby="basic-addon1" maxlength="6">
+  </div>
+  <br/>
+
+  <div *ngIf="wip" class="spinner-border text-danger" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <button *ngIf="!wip" class="btn btn-danger" (click)="onDownload()">Download the folder</button>
+
+</div>
+</div>

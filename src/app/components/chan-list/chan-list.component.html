@@ -1,0 +1,41 @@
+<div>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <a class="navbar-brand" routerLink="/"  style="height:36px; vertical-align: middle;"><img src='./assets/bread.png' height="24px"> BreadChan</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navbarSupportedContent" [attr.aria-expanded]="!isCollapsed" aria-label="Toggle navigation" (click)="toggleMenu()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="appNavigation" [ngbCollapse]="isCollapsed">
+      <div class="navbar-nav mr-auto">
+        <ul class="navbar-nav">
+          <li class="nav-item" *ngFor='let chan of chanList'>
+            <a class="nav-link" routerLink="/ch/{{chan}}">/{{chan}}</a>
+          </li>
+
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="/token">🎫 Use token</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#" (click)="addChan(addchancontent)">✨ Add folder</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<ng-template #addchancontent let-modal>
+    <div class="modal-body">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">/</span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]='newChanName' placeholder="Chan name" aria-label="Channame" aria-describedby="basic-addon1">
+      </div>
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Save</button>
+    </div>
+  </ng-template>
+
+</div>

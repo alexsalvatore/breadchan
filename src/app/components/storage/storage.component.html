@@ -1,0 +1,12 @@
+<div class="card text-centered bg-light " style='margin: 3rem;'>
+    <div class="card-header">
+        Manage your 🌐browser memory
+    </div>
+    <div class="card-body">
+    <b>{{percentStorage}}%</b>  or {{moUsed}} Mo used for 💽{{moAvalaible}} Mo are available <button (click)='onClearStorage()' class="btn btn-outline-danger btn-sm">Clear storage</button>
+    <div>
+     <br/>
+    <ngb-progressbar type="warning" [value]="percentStorage" [max]="100"></ngb-progressbar>
+    </div>
+    </div>
+</div>

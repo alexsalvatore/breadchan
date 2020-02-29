@@ -1,0 +1,31 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<header>
+<app-chan-list></app-chan-list>
+</header>
+
+<main *ngIf='isWorking' role="main">
+  <div class='text-center'>
+    <app-torrent></app-torrent>
+  </div>
+  <div>
+  <router-outlet>
+  </router-outlet>
+  <app-storage *ngIf='isWorking' class="container text-center"></app-storage>
+  </div>
+</main>
+
+<!--IN CASE OF ERROR -->
+<main *ngIf='!isWorking'  role="main" class="container text-center">
+    <div class="alert alert-warning mt-5" role="alert">
+      <h2>"It's dead 💀, Jim"</h2>
+      We do not supporting private browsing mode or IOS device (iPad or iPhone).
+    </div>
+</main>
+
+
+<footer class="footer">
+  <div class="container-fluid text-center p-3">
+  <small class="text-muted">By <a href='https://twitter.com/salvator_io' target='blank_'>Alexandre Salvatore</a>, R&D engineer,<br/>
+  Using the amazing <a href='https://webtorrent.io/' target='_blank'>❤️ Webtorrent</a> Javascript library.</small>
+  </div>
+</footer>

@@ -1,0 +1,34 @@
+<div>
+    <div class="jumbotron">
+        <div class="container">
+            <h1 *ngIf='!magnet || magnet === ""' class="display-4">🗂️ /{{chanName}}</h1>
+            <h1 *ngIf='magnet && magnet !== ""' class="display-4">🌏 /{{chanName}}</h1>
+
+            <div class="lead">
+            <app-chan-details [chanName]='chanName'></app-chan-details>
+            <div *ngIf="torrentHash && torrentHash!='' ">
+                <button (click)='deleteForHash()' class="btn btn-outline-danger">🗑️ Delete files from this torrent</button></div>
+            <app-torrent-leeching *ngIf='magnet && magnet !== ""' (onPostSaved)='onPostSaved($event)' [magnetURI]='magnet' [chanName]="chanName"></app-torrent-leeching>
+            </div>
+        </div>
+    </div>
+    
+    <app-posting *ngIf='!magnet || magnet === ""' [chanName]="chanName" (onPostSaved)='onPostSaved($event)'></app-posting>
+    
+     <div class="container">
+        <div class="container">
+            <ngb-pagination [collectionSize]="blogFileList.length" #numPages [pageSize]="itemsPerPage" [(page)]="currentPage" (pageChange)="onPageChange(currentPage)">
+            </ngb-pagination>
+        </div>
+        <table>
+            <tr *ngFor="let fileindex of blogFileList | slice: pageSize | slice: 0:itemsPerPage">
+                <div><b>#{{fileindex.id}}</b></div>
+                <div><app-media [hash]='fileindex.filehash' [heightMax]='350'></app-media></div>
+            </tr>
+        </table>
+        <div class="container">
+            <ngb-pagination [collectionSize]="blogFileList.length" #numPages [pageSize]="itemsPerPage" [(page)]="currentPage" (pageChange)="onPageChange(currentPage)">
+            </ngb-pagination>
+        </div>
+     </div>
+</div>

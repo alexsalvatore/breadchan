@@ -1,0 +1,45 @@
+<div class='container'>
+
+  <select class="form-control" (change)="onChangeUpload($event)">
+      <option value="file" default>Get file on your computer</option>
+      <option value="url">Get file from URL</option>
+  </select><br/>
+
+<div class="input-group mb-3" *ngIf="this.modeUpload === 'url'">
+ <div class="input-group-prepend">
+  <span  class="input-group-text">url</span>
+  </div>
+  <input type="text" class="form-control" [(ngModel)]="urlFile"><br/>
+</div>
+
+<app-media [heightMax]='150' [url]="urlFile"></app-media>
+
+<div class="input-group mb-3" *ngIf="this.modeUpload === 'file'">
+  <div class="input-group-prepend">
+  <span class="input-group-text">file: </span>
+  </div>
+  <input class="form-control" type="file"
+            #fileInput
+            (change)="onFileInput($event.target.files)"
+            multiple><br/>
+</div>
+
+<!--div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text">name</span>
+  </div>
+  <input class="form-control" [(ngModel)]="nameText"/>
+</div>
+
+<div class="input-group mb-3">
+ <div class="input-group-prepend">
+  <span class="input-group-text">Message</span>
+   </div>
+  <textarea  class="form-control" [(ngModel)]="commentText"></textarea>
+</div-->
+
+<div class="text-right">
+<button (click)="sendPost()"  class="btn btn-primary ">Post!</button>
+</div>
+
+</div>

@@ -1,0 +1,28 @@
+<div>
+
+<div *ngIf='torrent !== undefined'>
+Hash: {{torrent.infoHash  | truncate : 30}} |  Name: {{torrent.name}}<br/>
+<div class="mt-2 mb-2">
+    <ngb-progressbar value="{{progress}}"> {{progress}}%</ngb-progressbar>
+</div>
+Downloaded: {{torrent.downloaded}} | 👫 Peers: {{torrent.numPeers}} | Remaining: {{time}} (seconds)<br/>
+
+<div class="mt-2 mb-2">
+<div *ngIf="torrent.ready && !torrent.done" class="alert alert-primary" role="alert">
+  ⌛ Torrent currently donwloading, don't close the page
+</div>
+</div>
+
+<div class="mt-2 mb-2">
+<div *ngIf="error" class="alert alert-danger" role="alert">
+  💥 Error: {{error}}
+</div>
+</div>
+
+<div class="mt-2 mb-2">
+<div *ngIf="torrent.done" class="alert alert-success" role="alert">
+  ✅ Torrent has been successfuly downloaded!
+</div>
+</div>
+
+</div>

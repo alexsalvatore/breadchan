@@ -1,0 +1,32 @@
+<div>
+
+<div class='jumbotron jumbotron-fluid'>
+ <div class="container text-center">
+    <h1 class='display-2'><img class=".container" height="240px" src='./assets/bread_header.png' alt="breadchan.com"></h1>
+    <div class='lead'>
+    Transfering a file from <b>MacOS to Android</b> or <b>Android to MacOS</b> is Hell. <b>BreadChan</b> is web application enabling file transfert between 2 🌐browsers windows.
+    Working on <b>💻Desktop and 🤖Android</b>. Source available here: <a href="https://github.com/AlexSalvatorio/breadchan">https://github.com/AlexSalvatorio/breadchan</a>.
+    </div>
+    <br/>
+    <div class="alert alert-danger" role="alert">
+      The <b>Breadchan</b>'s server doesn't host kind of file. Files are hosted on the user desktop and transfered using the webRTC canal. Also we use public torrent trackers to connect users, so we do not recommand sharing any kind of sensitive data.
+    </div>
+</div>
+</div>
+
+<div *ngIf='chanList.length > 0' class="container">
+    <table class="table table-striped table-dark">
+        <thead class="text-center">
+          <tr>
+            <th scope="col">Folder(s) stored on this 🌐 browser</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let chan of chanList'>
+            <td><a routerLink="/ch/{{chan.channame}}"> 🗂️/{{chan.channame}}</a> </td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+
+</div>

@@ -1,0 +1,34 @@
+<div *ngIf='(currentChan && currentChan !=="") || (sharedChan && sharedChan !== "") ' class='card'>
+ <div class="card-body">
+    <h1 class='py-3' *ngIf='client == null'>🌱 <button (click)='launchClient()' class="btn btn-success btn-lg">Share <i>/{{this.currentChan}}</i></button> !</h1>
+    <div *ngIf='client !== undefined && torrent'>
+    <div class="alert alert-danger" role="alert">
+      Your currently 🌱 sharing <i>/{{sharedChan}}</i>. ⚠️ Your friend(s) will be able to download the folder <b>as long as this page remain open</b>.
+    </div>
+      Copy this link or QR-code to share it!<br/>
+      <span *ngIf="token && token !==''">Or use your download 🎫 token<br/><h2>Token: <kbd>{{token}}</kbd></h2></span>
+      <form class="">
+       <div class="input-group">
+        <input type="text" value="{{blogUrl}}" class="form-control"  #magnetinput readonly>
+        <div class="input-group-append" value="click to copy">
+        <button class="btn btn-outline-primary" (click)="copyInputMessage(magnetinput)">Copy</button>
+        </div>
+        </div>
+      </form>
+    <qr-code qr-code  [value]="blogUrl" [size]="256" [level]="'L'"></qr-code ><br/>
+    <!--div><a href='magnetURi'>{{magnetURi}}</a></div-->
+    <!--app-torrent-details [torrent]='torrent' [error]='error'  [client]='client'></app-torrent-details><br/--> 
+    <div>Uploaded: {{torrent.uploaded}} | 💨Upload Speed: {{client.uploadSpeed}} | 👫Peers: {{torrent.numPeers}}</div>
+    <p *ngIf='torrent.Ready'>Ready!</p>
+    <p *ngIf='torrent.Paused'>Seeding paused</p>
+    <p *ngIf='error'>Error! {{error}}</p>
+    </div>
+
+    <div *ngIf='client !== undefined && !torrent'>
+    Launching the 🌱seeding of <i>/{{sharedChan}}</i>...<br/><br/>
+    <div class="spinner-border text-success" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    </div>
+</div>
+</div>
